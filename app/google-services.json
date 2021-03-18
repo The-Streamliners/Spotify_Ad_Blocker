@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "181084523173",
+    "project_id": "spotifyadblocker-c6293",
+    "storage_bucket": "spotifyadblocker-c6293.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:181084523173:android:247bed141f334f374d9b4c",
+        "android_client_info": {
+          "package_name": "com.example.spotifyadblocker"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "181084523173-8f85fe6g1detc0nv68umm77ic39l9h5e.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.spotifyadblocker",
+            "certificate_hash": "7c71ae82bd2d5ea4a79a13944ed2daa675f996e6"
+          }
+        },
+        {
+          "client_id": "181084523173-mjdopvjjrqocefd374h07h2khf7v6v0n.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCYs7i2cIX2AUSKdgANEQr1nupbuvd-3yM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "181084523173-mjdopvjjrqocefd374h07h2khf7v6v0n.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

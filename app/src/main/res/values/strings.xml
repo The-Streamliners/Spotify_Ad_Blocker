@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Ad Blocker</string>
+    <string name="access_notification">Allow <b>Ad Blocker</b> to access  your notification?</string>
+</resources>
