@@ -30,23 +30,7 @@ public class MainActivity extends AppCompatActivity {
     ActivityMainBinding b;
     SharedPreferences sharedPreferences;
 
-    BroadcastReceiver mReceiver=new BroadcastReceiver() {
-        @Override
-        public void onReceive(Context context, Intent intent) {
-            switch (intent.getAction()){
-                case Constant.SONGS_COUNTER:
-                      b.countSongs.setText(""+sharedPreferences.getInt(Constant.SONGS_COUNTER,0));
-                      break;
-                case Constant.ADS_COUNTER:
-                    b.countAd.setText(""+sharedPreferences.getInt(Constant.ADS_COUNTER,0));
-                    break;
-                case Constant.BLOCKER_SWITCH:
-                    b.switch1.setChecked(false);
-                    b.switch1.setText("OFF");
-                    break;
-            }
-        }
-    };
+    BroadcastReceiver mReceiver;
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP_MR1)
     @Override
@@ -59,6 +43,10 @@ public class MainActivity extends AppCompatActivity {
 
         if(sharedPreferences!=null){
             b.switch1.setChecked(sharedPreferences.getBoolean(Constant.BLOCKER_SWITCH,false));
+            if(sharedPreferences.getBoolean(Constant.BLOCKER_SWITCH,false)&&!sharedPreferences.getString("previousSong","").isEmpty()){
+                b.songDescription.setVisibility(View.VISIBLE);
+                b.songName.setText(sharedPreferences.getString("previousSong",""));
+            }
 
             b.switch1.setText(sharedPreferences.getString(Constant.BLOCKER_TEXT,"OFF"));
             b.countAd.setText(""+sharedPreferences.getInt(Constant.ADS_COUNTER,0));
@@ -71,6 +59,10 @@ public class MainActivity extends AppCompatActivity {
            @Override
            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                if(isChecked){
+                   ComponentName thisComponent = new ComponentName(MainActivity.this,NotificationListenerService.class);
+                   PackageManager pm = getPackageManager();
+                   pm.setComponentEnabledSetting(thisComponent, PackageManager.COMPONENT_ENABLED_STATE_ENABLED, PackageManager.DONT_KILL_APP);
+
                    if(!isNotificationServiceEnabled()){
                        b.switch1.setChecked(false);
                        showNotificationAccessDialog();
@@ -82,6 +74,10 @@ public class MainActivity extends AppCompatActivity {
                            .putBoolean(Constant.BLOCKER_SWITCH,true).apply();
                    sharedPreferences.edit()
                            .putString(Constant.BLOCKER_TEXT,"ON").apply();
+                   if(!sharedPreferences.getString("previousSong","").isEmpty()){
+                       b.songDescription.setVisibility(View.VISIBLE);
+                       b.songName.setText(sharedPreferences.getString("previousSong",""));
+                   }
                    startService(new Intent(MainActivity.this,NotificationListenerCollectorService.class));
                }
                else{
@@ -89,6 +85,7 @@ public class MainActivity extends AppCompatActivity {
                    sharedPreferences.edit()
                            .putBoolean(Constant.BLOCKER_SWITCH,false)
                            .putString(Constant.BLOCKER_TEXT,"OFF").apply();
+                   b.songDescription.setVisibility(View.INVISIBLE);
                    stopService(new Intent(MainActivity.this,NotificationListenerCollectorService.class));
                }
            }
@@ -126,6 +123,25 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void registerLocalBroadcast() {
+        mReceiver=new BroadcastReceiver() {
+            @Override
+            public void onReceive(Context context, Intent intent) {
+                switch (intent.getAction()){
+                    case Constant.SONGS_COUNTER:
+                        b.countSongs.setText(""+sharedPreferences.getInt(Constant.SONGS_COUNTER,0));
+                        b.songDescription.setVisibility(View.VISIBLE);
+                        b.songName.setText(sharedPreferences.getString("previousSong",""));
+                        break;
+                    case Constant.ADS_COUNTER:
+                        b.countAd.setText(""+sharedPreferences.getInt(Constant.ADS_COUNTER,0));
+                        break;
+                    case Constant.BLOCKER_SWITCH:
+                        b.switch1.setChecked(false);
+                        b.switch1.setText("OFF");
+                        break;
+                }
+            }
+        };
         IntentFilter filter =new IntentFilter();
         filter.addAction(Constant.SONGS_COUNTER);
         filter.addAction(Constant.ADS_COUNTER);

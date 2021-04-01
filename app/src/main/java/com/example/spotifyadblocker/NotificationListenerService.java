@@ -44,7 +44,8 @@ public class NotificationListenerService extends android.service.notification.No
             return;
         }
         boolean isAdd=(sbn.getNotification().actions.length==3);
-        String previousSong=sharedPreferences.getString("previousSong",""),newSong;
+        String previousSong=sharedPreferences.getString("previousSong",""),
+                newSong;
 
         newSong = sbn.getNotification().extras.getCharSequence("android.title").toString();
 

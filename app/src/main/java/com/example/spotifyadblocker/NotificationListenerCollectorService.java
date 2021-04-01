@@ -36,11 +36,6 @@ public class NotificationListenerCollectorService extends Service {
     public void onCreate() {
         super.onCreate();
         startForeground();
-
-        ComponentName thisComponent = new ComponentName(this, /*getClass()*/ NotificationListenerService.class);
-        PackageManager pm = getPackageManager();
-        pm.setComponentEnabledSetting(thisComponent, PackageManager.COMPONENT_ENABLED_STATE_ENABLED, PackageManager.DONT_KILL_APP);
-
     }
 
     @Override
