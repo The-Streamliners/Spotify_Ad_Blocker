@@ -13,11 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SpotifyAdBlocker">
         <activity android:name=".activity.SignUpActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".activity.LeaderBoardActivity" />
         <activity android:name=".activity.FAQSActivity" />
@@ -25,6 +21,11 @@
             android:name=".activity.MainActivity"
             android:launchMode="singleTop"
             android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity android:name=".VerificationActivity" />
         <activity android:name=".LoginPageActivity" />
