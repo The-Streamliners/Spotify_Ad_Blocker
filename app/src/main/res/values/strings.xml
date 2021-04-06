@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">Ad Blocker</string>
     <string name="access_notification">Allow <b>Ad Blocker</b> to access  your notification?</string>
+    <string name="note">For best experience keep running this app in background</string>
+    <string name="website">dontkillmyapp.com</string>
+    <string name="faq_1">Q. What is AD Blocker?</string>
+    <string name="faq_1_ans">A.  AD Blocker is an app that is used to mute spotify ads.</string>
 </resources>

@@ -13,6 +13,8 @@
     <color name="AppTheme_2_Dark">#4A6572</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="pieChart1">#FFEA7E</color>
+    <color name="pieChart2">#02D3F1</color>
     <color name="overlay_dark_10">#1A000000</color>
     <color name="overlay_dark_20">#33000000</color>
     <color name="overlay_dark_30">#4D000000</color>
@@ -119,6 +121,7 @@
     <color name="yellow_A200">#FFFF00</color>
     <color name="yellow_A400">#FFEA00</color>
     <color name="yellow_A700">#FFD600</color>
+
 
     <color name="deep_orange_50">#FBE9E7</color>
     <color name="deep_orange_100">#FFCCBC</color>

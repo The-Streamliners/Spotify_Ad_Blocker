@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.example.spotifyadblocker.Models.Users;
+import com.example.spotifyadblocker.activity.MainActivity;
 import com.example.spotifyadblocker.databinding.ActivityVerificationBinding;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -76,7 +77,7 @@ public class VerificationActivity extends AppCompatActivity {
                              @Override
                              public void onSuccess(Void aVoid) {
                                  Toast.makeText(VerificationActivity.this, "Login Successfully", Toast.LENGTH_SHORT).show();
-                                 Intent i=new Intent(VerificationActivity.this,MainActivity.class);
+                                 Intent i=new Intent(VerificationActivity.this, MainActivity.class);
                                  startActivity(i);
                                  finish();
                              }
