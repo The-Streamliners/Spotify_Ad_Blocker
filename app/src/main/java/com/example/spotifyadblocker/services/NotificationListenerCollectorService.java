@@ -1,4 +1,4 @@
-package com.example.spotifyadblocker;
+package com.example.spotifyadblocker.services;
 
 import android.annotation.SuppressLint;
 import android.app.Notification;
@@ -9,7 +9,6 @@ import android.app.Service;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.IBinder;
@@ -20,8 +19,9 @@ import androidx.core.app.NotificationCompat;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
 import com.example.spotifyadblocker.Models.Constant;
+import com.example.spotifyadblocker.R;
+import com.example.spotifyadblocker.activity.MainActivity;
 
-import static androidx.core.app.NotificationCompat.FLAG_FOREGROUND_SERVICE;
 import static androidx.core.app.NotificationCompat.PRIORITY_MIN;
 
 public class NotificationListenerCollectorService extends Service {
@@ -58,8 +58,6 @@ public class NotificationListenerCollectorService extends Service {
             PackageManager pm = getPackageManager();
             pm.setComponentEnabledSetting(thisComponent, PackageManager.COMPONENT_ENABLED_STATE_DISABLED, PackageManager.DONT_KILL_APP);
 
-
-
             stopSelf();
         }
 
@@ -73,7 +71,7 @@ public class NotificationListenerCollectorService extends Service {
             channelId= createNotificationChannel("my_service", "My Background Service");
         }
 
-        Intent i=new Intent(this,MainActivity.class);
+        Intent i=new Intent(this, MainActivity.class);
 
         PendingIntent contentIntent = PendingIntent.getActivity(getApplicationContext(),0 , i,0 );
 
@@ -108,12 +106,10 @@ public class NotificationListenerCollectorService extends Service {
 
     @Override
     public void onDestroy() {
-        super.onDestroy();
-
-
         ComponentName thisComponent = new ComponentName(this, NotificationListenerService.class);
         PackageManager pm = getPackageManager();
         pm.setComponentEnabledSetting(thisComponent, PackageManager.COMPONENT_ENABLED_STATE_DISABLED, PackageManager.DONT_KILL_APP);
+        super.onDestroy();
 
     }
 }

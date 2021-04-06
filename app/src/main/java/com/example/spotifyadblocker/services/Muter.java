@@ -1,4 +1,4 @@
-package com.example.spotifyadblocker;
+package com.example.spotifyadblocker.services;
 
 import android.content.Context;
 import android.media.AudioManager;

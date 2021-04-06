@@ -6,4 +6,5 @@ public class Constant {
     public static final String SONGS_COUNTER="songsCounter";
     public static final String BLOCKER_TEXT="blockerText";
     public static final String BLOCKER_SWITCH="blockerSwitch";
+    public static final String PLAYING_STATE="playingState";
 }
